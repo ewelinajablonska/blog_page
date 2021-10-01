@@ -3,7 +3,7 @@ from . import views
 
 app_name = 'blog_app'
 
-urlspatterns=[
+urlpatterns=[
     #Home page
     path('', views.index, name = 'index'),
 ]
