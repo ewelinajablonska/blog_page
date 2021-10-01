@@ -17,7 +17,7 @@ def new_post(request):
         form = PostForm(data = request.POST)
         if form.is_valid():
             form.save()
-            return redirect('blog_app:posts')
+            return redirect('blog_app:index')
     
     context = {'form' : form}
     return render(request, 'blog_app/new_post.html', context)
