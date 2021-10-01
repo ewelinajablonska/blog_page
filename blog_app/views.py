@@ -1,6 +1,5 @@
 from django.shortcuts import render, redirect
-
-from blog_app.models import BlogPost
+from .models import BlogPost
 from .forms import PostForm
 
 # Create your views here.
@@ -18,7 +17,7 @@ def new_post(request):
         form = PostForm(data = request.POST)
         if form.is_valid():
             form.save()
-            return redirect('blog_app: posts')
+            return redirect('blog_app:posts')
     
     context = {'form' : form}
     return render(request, 'blog_app/new_post.html', context)
