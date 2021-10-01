@@ -8,7 +8,9 @@
 
     <ul>
         {% for post in posts %}
-            <li>{{post}}</li>
+            <li>
+                <p>{{post}}</p>
+            </li>
         {% empty %}
             <li> No posts. </li>
         {%endfor%}    
