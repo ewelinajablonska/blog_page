@@ -1,8 +1,17 @@
-<head>
-    <title> My blog </title>
-</head>
+{% extends "blog_app/base.html" %}
 
-<body>
-    <h1> Welcome to my blog website! </h1>
+{% block content %}
+
     <p> This is history of my learning progress. </p>
-</body>
+
+    <p>LAST POSTS</p>
+
+    <ul>
+        {% for post in posts %}
+            <li>{{post}}</li>
+        {% empty %}
+            <li> No posts. </li>
+        {%endfor%}    
+    </ul>
+
+{% endblock content %}
