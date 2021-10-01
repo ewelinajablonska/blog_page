@@ -1,0 +1,19 @@
+{% extends "blog_app/base.html" %}
+
+{% block content %}
+
+    <p> This is history of my learning progress. </p>
+
+    <p>LAST POSTS</p>
+
+    <ul>
+        {% for post in posts %}
+            <li>
+                <p>{{post}}</p>
+            </li>
+        {% empty %}
+            <li> No posts. </li>
+        {%endfor%}    
+    </ul>
+
+{% endblock content %}
