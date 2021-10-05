@@ -4,11 +4,9 @@
 
     <p> This is history of my learning progress. </p>
 
-    <p>LAST POSTS</p>
+    <a href="{% url 'blog_app:new_post' %}">ADD NEW POST</span></a>
 
-    <li>
-        <a href="{% url 'blog_app:new_post' %}">Add the new POST</a>
-    </li>
+    <p>LAST POSTS</p>
     
     <ul>
         {% for post in posts %}
