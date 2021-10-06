@@ -2,7 +2,7 @@
 
 {% block content %}
     <p>Add new post:</p>
-    <form action = "{%url 'blog_app:new_post' %}" method = 'post'>
+    <form method = 'POST' class = 'post-form'>
         {% csrf_token %}
         {{ form.as_p }}
         <button name = "submit"> Add POST </button>

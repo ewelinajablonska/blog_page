@@ -16,9 +16,9 @@ def new_post(request):
     else:
         form = PostForm(data = request.POST)
         if form.is_valid():
-            post = form.save(commit=False)
-            form.save()
-            return redirect('blog_app:index', pk=post.pk)
+            post= form.save(commit = False)
+            post.save()
+            return redirect('blog_app:index/')
     
     context = {'form' : form}
     return render(request, 'blog_app/new_post.html', context)
@@ -29,10 +29,10 @@ def edit_post(request, pk):
     if request.method != 'POST':
         form = PostForm(instance=post)
     else:
-        form = PostForm(data = request.POST, instance=post)
+        form = PostForm(request.POST, instance=post)
         if form.is_valid():
-            post = form.save(commit=False)
-            form.save()
+            post= form.save(commit = False)
+            post.save()
             return redirect('blog_app:index')
     
     context = {'form' : form}
