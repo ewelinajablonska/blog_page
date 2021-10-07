@@ -18,3 +18,6 @@ def register(request):
     #Display blank or invalid form
     context = {'form': form}
     return render(request, 'registration/register.html', context)
+
+def logout(request):
+    return render(request, 'registration/logout.html')
