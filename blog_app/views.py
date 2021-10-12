@@ -2,6 +2,7 @@ from django.shortcuts import get_object_or_404, render, redirect
 from .models import BlogPost
 from .forms import PostForm
 from django.contrib.auth.decorators import login_required
+from django.http import Http404
 
 # Create your views here.
 def index(request):
@@ -15,8 +16,13 @@ def new_post(request):
     """Form for add new post."""
     if request.method != 'POST':
         form = PostForm()
+        if form.owner != request.user:
+            raise Http404
     else:
         form = PostForm(data = request.POST)
+        if form.owner != request.user:
+            raise Http404
+
         if form.is_valid():
             post= form.save(commit = False)
             post.save()
@@ -31,8 +37,12 @@ def edit_post(request, pk):
     post= get_object_or_404(BlogPost, pk=pk)
     if request.method != 'POST':
         form = PostForm(instance=post)
+        if form.owner != request.user:
+            raise Http404
     else:
         form = PostForm(request.POST, instance=post)
+        if form.owner != request.user:
+            raise Http404
         if form.is_valid():
             post= form.save(commit = False)
             post.save()
