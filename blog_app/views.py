@@ -1,6 +1,7 @@
 from django.shortcuts import get_object_or_404, render, redirect
 from .models import BlogPost
 from .forms import PostForm
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 def index(request):
@@ -9,6 +10,7 @@ def index(request):
     context = { 'posts' : posts}
     return render(request, 'blog_app/index.html', context)
 
+@login_required
 def new_post(request):
     """Form for add new post."""
     if request.method != 'POST':
@@ -23,6 +25,7 @@ def new_post(request):
     context = {'form' : form}
     return render(request, 'blog_app/new_post.html', context)
 
+@login_required
 def edit_post(request, pk):
     """Form for edit post."""
     post= get_object_or_404(BlogPost, pk=pk)
