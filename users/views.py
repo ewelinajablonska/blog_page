@@ -8,7 +8,7 @@ def register(request):
     if request.method != 'POST':
         form = UserCreationForm()
     else:
-        form = UserCreationForm(data=request.post)
+        form = UserCreationForm(data=request.POST)
         if form.is_valid():
             new_user = form.save()
             #log the user in and then redirect to home page
@@ -19,5 +19,3 @@ def register(request):
     context = {'form': form}
     return render(request, 'registration/register.html', context)
 
-def logout(request):
-    return render(request, 'registration/logout.html')
