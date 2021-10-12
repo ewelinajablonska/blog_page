@@ -7,9 +7,14 @@ from django.http import Http404
 # Create your views here.
 def index(request):
     """The home page for blog application."""
+    return render(request, 'blog_app/index.html')
+
+@login_required
+def posts(request):
+    """Page for posts belongs to user"""
     posts = BlogPost.objects.filter(owner=request.user).order_by('date_added')
     context = { 'posts' : posts}
-    return render(request, 'blog_app/index.html', context)
+    return render(request, 'blog_app/posts.html', context)   
 
 @login_required
 def new_post(request):

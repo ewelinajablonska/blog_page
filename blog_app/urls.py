@@ -10,4 +10,6 @@ urlpatterns=[
     path('new_post/', views.new_post, name = 'new_post'),
     #Page for edit a new post
     path('edit_post/<int:pk>/', views.edit_post, name = 'edit_post'),
+    #Page for posts belongs to user
+    path('posts/', views.posts, name = 'posts'),
 ]

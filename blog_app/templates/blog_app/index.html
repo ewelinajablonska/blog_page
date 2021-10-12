@@ -2,23 +2,6 @@
 
 {% block content %}
 
-    <p> This is history of my learning progress. </p>
+    <p> This is history of mine... </p>
     
-    <a href="{% url 'blog_app:new_post' %}">ADD NEW POST</a>
-
-    <p>LAST POSTS</p>
-    
-    <ul>
-        {% for post in posts %}
-            <div>
-                <p>{{post.date_added}}</p>
-                <h2><a href="">{{post.title}}</a></h2>
-                <p>{{post.text|linebreaksbr}}</p>
-                <a href="{% url 'blog_app:edit_post' pk=post.pk %}">edit</a>
-            </div>
-        {% empty %}
-            <li> No posts. </li>
-        {%endfor%}    
-    </ul>
-
 {% endblock content %}
