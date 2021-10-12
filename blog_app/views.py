@@ -25,6 +25,7 @@ def new_post(request):
 
         if form.is_valid():
             post= form.save(commit = False)
+            post.owner=request.user
             post.save()
             return redirect('blog_app:index/')
     
