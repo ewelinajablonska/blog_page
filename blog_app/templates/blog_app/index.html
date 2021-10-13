@@ -2,6 +2,18 @@
 
 {% block content %}
 
-    <p> This is history of mine... </p>
+    <p> This is the history of our journeys. </p>
+
+    <ul>
+        {% for post in posts %}
+            <div>
+                <p>{{post.date_added}}</p>
+                <h2><a href="">{{post.title}}</a></h2>
+                <p>{{post.text|linebreaksbr}}</p>
+            </div>
+        {% empty %}
+            <li> No posts. </li>
+        {%endfor%}    
+    </ul>
     
 {% endblock content %}
