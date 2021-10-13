@@ -40,11 +40,11 @@ def edit_post(request, pk):
     post= get_object_or_404(BlogPost, pk=pk)
     if request.method != 'POST':
         form = PostForm(instance=post)
-        if form.owner != request.user:
+        if post.owner != request.user:
             raise Http404
     else:
         form = PostForm(request.POST, instance=post)
-        if form.owner != request.user:
+        if post.owner != request.user:
             raise Http404
         if form.is_valid():
             post= form.save(commit = False)
