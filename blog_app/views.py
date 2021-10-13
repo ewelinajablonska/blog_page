@@ -23,18 +23,13 @@ def new_post(request):
     """Form for add new post."""
     if request.method != 'POST':
         form = PostForm()
-        if form.owner != request.user:
-            raise Http404
     else:
         form = PostForm(data = request.POST)
-        if form.owner != request.user:
-            raise Http404
-
         if form.is_valid():
             post= form.save(commit = False)
             post.owner=request.user
             post.save()
-            return redirect('blog_app:index/')
+            return redirect('blog_app:index')
     
     context = {'form' : form}
     return render(request, 'blog_app/new_post.html', context)
