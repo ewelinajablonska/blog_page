@@ -1,20 +1,38 @@
 {% extends "blog_app/base.html" %}
 
 {% block content %}
+<br>
+<br>
+<main class="container">
+  <div class="p-4 p-md-5 mb-4 text-white rounded bg-dark">
+    <div class="col-md-6 px-0">
+      <h1 class="display-4 fst-italic">Title of a longer featured blog post</h1>
+      <p class="lead my-3">Multiple lines of text that form the lede, informing new readers quickly and efficiently about what’s most interesting in this post’s contents.</p>
+      <p class="lead mb-0"><a href="#" class="text-white fw-bold">Continue reading...</a></p>
+    </div>
+  </div>
 
-    <p> This is the history of our journeys. </p>
+  <div class="row g-5">
+    <div class="col-md-8">
+      <h3 class="pb-4 mb-4 fst-italic border-bottom">
+        Breaking News
+      </h3>
 
-    <ul>
         {% for post in posts %}
             <div>
-                <p>{{post.date_added}}</p>
-                <h2><a href="">{{post.title}}</a></h2>
+                <article class="blog-post">
+                <h2 class="blog-post-title">{{post.title}}</h2>
+                <p class="blog-post-meta">{{post.date_added}} by <a href="#">{{post.owner}}</a></p>
+                <br>
                 <p>{{post.text|linebreaksbr}}</p>
-                <a>{{post.owner}}</a>
             </div>
         {% empty %}
             <li> No posts. </li>
         {%endfor%}    
-    </ul>
+</main>
+
+
+        
+
     
 {% endblock content %}
