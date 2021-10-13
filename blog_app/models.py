@@ -11,4 +11,4 @@ class BlogPost(models.Model):
 
     def __str__(self):
         """Return a string representation of the model."""
-        return (f"({self.date_added}) {self.title}: {self.text}\n")
+        return (f"({self.date_added}) {self.title}: {self.text}: {self.owner}\n")
